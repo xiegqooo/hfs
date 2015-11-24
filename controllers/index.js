@@ -14,8 +14,15 @@ var self = function(req, res){
 	form.parse(req, function(err, fields, files) {
 				
 		if(fields.dir){
-			path += "/"+fields.dir;
-			target += "/"+fields.dir;
+
+			// 美化 url 地址
+			if(fields.dir == '..'){
+				path = path.substring(0,path.lastIndexOf('\\'));
+				target = target.substring(0,target.lastIndexOf('\\'));
+			}else{
+				path += "\\"+fields.dir;
+				target += "\\"+fields.dir;
+			}
 		}
 		
 		// s 读取目录
