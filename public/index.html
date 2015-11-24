@@ -1,0 +1,84 @@
+﻿<html>
+<head>
+<meta charset="UTF-8">
+<link href="./css/file.css" type="text/css" media="screen, projection" rel="stylesheet">
+<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8%2F9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAjFJREFUeNqsU8uOElEQPffR3XQ3ONASdBJCSBxHos5%2B3Bg3rvkCv8PElS78gPkO%2FATjQoUdO2ftrJiRh6aneTb9sOpC4weMN6lcuFV16pxDIfI8x12OYIDhcPiu2Wx%2B%2FHF5CW1Z6Jyegt%2FTNEWSJIjjGFEUIQxDrFYrWFSzXC4%2FdLvd95pRKpXKy%2BpRFZ7nwaWo1%2BsGnQG2260BKJfLKJVKGI1GEEJw7ateryd0v993W63WEwjgxfn5obGYzgCbzcaEbdsIggDj8Riu6z6iUk9SYZMSx8W0LMsM%2FSKK75xnJlIq80anQXdbEp0OhcPJ0eiaJnGRMEyyPDsAKKUM9clkYoDo3SZJzzSdp0VSKYmfV1co%2Bz580kw5KDIM8RbRfEnUf1HzxtQyMAGcaGruTKczMzEIaqhKifV6jd%2BzGQQB5llunF%2FM52BizC2K5sYPYvZcu653tjOM9O93wnYc08gmkgg4VAxixfqFUJT36AYBZGd6PJkFCZnnlBxMp38gqIgLpZB0y4Nph18lyWh5FFbrOSxbl3V4G%2BVB7T4ajYYxTyuLtO%2BCvWGgJE1Mc7JNsJEhvgw%2FQV4fo%2F24nbEsX2u1d5sVyn8sJO0ZAQiIYnFh%2BxrfLz%2Fj29cBS%2FO14zg3i8XigW3ZkErDtmKoeM%2BAJGRMnXeEPGKf0nCD1ydvkDzU9Jbc6OpR7WIw6L8lQ%2B4pQ1%2FlPF0RGM9Ns91Wmptk0GfB4EJkt77vXYj%2F8m%2B8y%2FkrwABHbz2H9V68DQAAAABJRU5ErkJggg%3D%3D" type="image/png" rel="icon">
+
+<?php 
+
+  if(!isset($_POST['dir'])){
+	$hostdir = dirname("E:\\workspace\\Xiangxin\\src\\app\\src\\main\\webapp");
+  }else{
+	$hostdir = $_POST['dir'];
+  }
+  
+  //获取本文件目录的文件夹地址
+  $filesnames = scandir($hostdir);
+?>
+<title>发布项目</title>
+<base href="<?php echo $hostdir?>">
+</head>
+<body dir="ltr">
+
+	
+	<h1><?php echo $hostdir?> 的索引</h1>
+	<!-- 返回上目录 -->
+	<form action="" method="POST" id="backform">
+		<input type="hidden" name="dir" value="<?php echo $hostdir."\\.."?>">
+		<p id="UI_goUp">
+		<a href="javascript:document.getElementById('backform').submit();" class="up">回到上一层文件夹</a>
+		</p>
+		<p style="display: block;" id="UI_showHidden"><label><input type="checkbox"  checked="">显示隐藏对象</label></p>
+	</form>
+	<!-- /返回上目录 -->
+	<table order="" class="">
+		 <thead>
+		  <tr>
+		   <th><a href="">名称</a></th>
+		   <th><a href="">大小</a></th>
+		   <th colspan="2"><a href="">修改时间</a></th>
+		  </tr>
+		 </thead>
+
+		 <tbody>
+			<!-- s 循环 -->
+			<?php
+			$i = 0 ;
+			foreach ($filesnames as $name) {
+			
+			if($name == '.' || $name == '..'){
+				continue;
+			}
+			//echo $name; 
+			 
+			if(is_dir($hostdir.'/'.$name)){
+				$type = "dir";
+			}else{
+				$type = "file";
+			}
+				
+			
+			?>
+			<form action="" method="POST" id="form<?php echo$i ?>">
+				<input type="hidden" name="<?php echo $type?>" value="<?php echo $hostdir.'/'.$name?>">
+			<tr class="hidden-object">
+			 <td>
+				<table class="ellipsis"><tbody><tr><td>
+				<a href="javascript:document.getElementById('form<?php echo $i ?>').submit();" class="<?php echo $type?>"><?php echo $name?></a></td></tr></tbody></table>
+				
+			 </td>
+			 <td></td>
+			 <td>2015-10-08</td>
+			 <td>14:59:59</td>
+			</tr>
+			</form>
+			<?php
+			 $i++;
+			}
+			?>
+			<!-- e 循环 -->
+	
+		</tbody>
+	</table>
+</body>
+</html>

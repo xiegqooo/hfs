@@ -1,0 +1,105 @@
+:root {
+    background-color: -moz-dialog;
+    color: -moz-dialogtext;
+    font: message-box;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+body {
+    background-color: -moz-field;
+    border: 1px solid threedshadow;
+    border-radius: 10px;
+    color: -moz-fieldtext;
+    margin: 4em auto;
+    max-width: 65em;
+    min-width: 30em;
+    padding: 3em;
+}
+h1 {
+    border-bottom: 1px solid threedlightshadow;
+    font-size: 160%;
+    font-weight: normal;
+    margin: 0 0 0.6em;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+p {
+    font-size: 110%;
+}
+#UI_goUp {
+    float: left;
+    margin-top: 0;
+}
+#UI_goUp:-moz-dir(rtl) {
+    float: right;
+}
+#UI_showHidden {
+    float: right;
+    margin-top: 0;
+}
+#UI_showHidden:-moz-dir(rtl) {
+    float: left;
+}
+table {
+    clear: both;
+    margin: 0 auto;
+    width: 90%;
+}
+
+table.ellipsis {
+	border-spacing: 0;
+    table-layout: fixed;
+    width: 100%;
+}
+
+thead {
+    font-size: 16px;
+}
+th {
+    text-align: start;
+    white-space: nowrap;
+}
+
+th>a{
+	color:#000;
+}
+th:last-child {
+    text-align: center;
+}
+th:hover > a {
+    text-decoration: underline;
+	
+}
+body > table > tbody > tr:hover {
+    -moz-outline-radius: 0.3em;
+    outline: 1px solid threedlightshadow;
+}
+
+td{
+	font-size:12px;
+	cursor:pointer;
+}
+
+td:not(:first-child) {
+    width: 0;
+}
+.up {
+    margin-inline-start: 20px;
+    padding: 0 0.5em;
+}
+.up::before {
+    content: url("../img/up.png");
+    margin-inline-end: 4px;
+    margin-inline-start: -20px;
+    vertical-align: middle;
+}
+.dir::before {
+    content: url("../img/folder.png");
+}
+.file::before {
+    content: url("../img/file.png");
+}
