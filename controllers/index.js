@@ -18,10 +18,10 @@ var self = function(req, res){
 			// 美化 url 地址
 			if(fields.dir == '..'){
 				path = path.substring(0,path.lastIndexOf('\\'));
-				target = target.substring(0,target.lastIndexOf('\\'));
+				target = target.substring(0,target.lastIndexOf('/'));
 			}else{
 				path += "\\"+fields.dir;
-				target += "\\"+fields.dir;
+				target += "/"+fields.dir;
 			}
 		}
 		
