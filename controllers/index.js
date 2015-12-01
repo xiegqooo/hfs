@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var formidable = require('formidable');
+var dateFormat = require('dateformat');
 
 var path = config.path;
 var target = config.target;
@@ -36,7 +37,8 @@ var self = function(req, res){
 				// s 读取文件信息
 				fs.stat(path+'\\'+file,function(err, data){
 					var type = data.isFile()?'file':'dir';
-					show.push({number:i,'file':file,'size':data.size,'type':type});
+
+					show.push({number:i,'file':file,'size':data.size,'type':type,'mtime':dateFormat(data.mtime,"yyyy-mm-dd hh:MM:ss")});
 					i ++ ;
 					
 					if( i == total){

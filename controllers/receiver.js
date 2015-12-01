@@ -17,15 +17,15 @@ exports.create = function(req, res) {
 			to:fields.to,
 			file:fs.createReadStream(fields.file)
 		}
-		// 记录上传文件 
-		logger.log(fields.file);
+		
 		// 上传文件
 		request.post({url:server, formData: formData}, function optionalCallback(err, httpResponse, body) {
 		  if (err) {
 			res.send('{success:false}');
 		  }
 		  if('0' == body){
-			 
+			 // 记录上传文件 
+			logger.log(fields.file);
 			res.send('{success:true}');
 		  }
 		});

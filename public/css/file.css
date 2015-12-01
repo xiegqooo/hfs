@@ -1,20 +1,18 @@
-:root {
-    background-color: -moz-dialog;
-    color: -moz-dialogtext;
-    font: message-box;
-    padding-left: 2em;
-    padding-right: 2em;
-}
 body {
-    background-color: -moz-field;
+    background-color: #F0F0F0;
+}
+
+.warp{
+	background-color: #fff;
     border: 1px solid threedshadow;
     border-radius: 10px;
-    color: -moz-fieldtext;
+    color: #000;
     margin: 4em auto;
     max-width: 65em;
     min-width: 30em;
     padding: 3em;
 }
+
 h1 {
     border-bottom: 1px solid threedlightshadow;
     font-size: 160%;
@@ -50,31 +48,23 @@ table {
     width: 90%;
 }
 
-table.ellipsis {
-	border-spacing: 0;
-    table-layout: fixed;
-    width: 100%;
-}
-
 thead {
     font-size: 16px;
 }
 th {
-    text-align: start;
+    text-align: left;
     white-space: nowrap;
 }
 
 th>a{
 	color:#000;
 }
-th:last-child {
-    text-align: center;
-}
 th:hover > a {
     text-decoration: underline;
 	
 }
-body > table > tbody > tr:hover {
+
+.warp > table > tbody > tr:hover {
     -moz-outline-radius: 0.3em;
     outline: 1px solid threedlightshadow;
 }
@@ -82,11 +72,9 @@ body > table > tbody > tr:hover {
 td{
 	font-size:12px;
 	cursor:pointer;
+	text-align: left;
 }
 
-td:not(:first-child) {
-    width: 0;
-}
 .up {
     margin-inline-start: 20px;
     padding: 0 0.5em;
