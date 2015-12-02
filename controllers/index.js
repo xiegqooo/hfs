@@ -45,6 +45,7 @@ var self = function(req, res){
 						res.render("index",{
 							"current_dir":path,
 							"target_dir":target,
+							"root_dir":config.path,
 							"data":show
 						}); 
 					}

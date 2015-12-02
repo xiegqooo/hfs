@@ -1,74 +1,72 @@
 ﻿<html>
 <head>
 <meta charset="UTF-8">
-<link href="/static/css/file.css" type="text/css" media="screen, projection" rel="stylesheet">
+<link href="./css/v1.css" type="text/css" media="screen, projection" rel="stylesheet">
 <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8%2F9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAjFJREFUeNqsU8uOElEQPffR3XQ3ONASdBJCSBxHos5%2B3Bg3rvkCv8PElS78gPkO%2FATjQoUdO2ftrJiRh6aneTb9sOpC4weMN6lcuFV16pxDIfI8x12OYIDhcPiu2Wx%2B%2FHF5CW1Z6Jyegt%2FTNEWSJIjjGFEUIQxDrFYrWFSzXC4%2FdLvd95pRKpXKy%2BpRFZ7nwaWo1%2BsGnQG2260BKJfLKJVKGI1GEEJw7ateryd0v993W63WEwjgxfn5obGYzgCbzcaEbdsIggDj8Riu6z6iUk9SYZMSx8W0LMsM%2FSKK75xnJlIq80anQXdbEp0OhcPJ0eiaJnGRMEyyPDsAKKUM9clkYoDo3SZJzzSdp0VSKYmfV1co%2Bz580kw5KDIM8RbRfEnUf1HzxtQyMAGcaGruTKczMzEIaqhKifV6jd%2BzGQQB5llunF%2FM52BizC2K5sYPYvZcu653tjOM9O93wnYc08gmkgg4VAxixfqFUJT36AYBZGd6PJkFCZnnlBxMp38gqIgLpZB0y4Nph18lyWh5FFbrOSxbl3V4G%2BVB7T4ajYYxTyuLtO%2BCvWGgJE1Mc7JNsJEhvgw%2FQV4fo%2F24nbEsX2u1d5sVyn8sJO0ZAQiIYnFh%2BxrfLz%2Fj29cBS%2FO14zg3i8XigW3ZkErDtmKoeM%2BAJGRMnXeEPGKf0nCD1ydvkDzU9Jbc6OpR7WIw6L8lQ%2B4pQ1%2FlPF0RGM9Ns91Wmptk0GfB4EJkt77vXYj%2F8m%2B8y%2FkrwABHbz2H9V68DQAAAABJRU5ErkJggg%3D%3D" type="image/png" rel="icon">
 
 <title>发布项目</title>
 </head>
-<body>
+<body>	
+	<div class="warp">
+		<h1>E:\workspace\Xiangxin\src\app\src\main\webapp的索引</h1>
+		<input type="hidden" name="target" id="target" value="/usr/local/p2p_zhnx/appserver/app/webapps/ROOT">
+		<input type="hidden" name="work" id="work" value="E:\workspace\Xiangxin\src\app\src\main\webapp">
+		
+		<!-- 返回上目录 -->
+		
+		<form action="" method="POST" id="backform">
+			<input type="hidden" name="dir" id="dir" value="..">
+			<p id="UI_goUp">
+			<a href="javascript:;" class="up" alt="backform">回到上一层文件夹</a>
+			</p>
+			<p style="display: block;" id="UI_showHidden"><label><input type="checkbox"  checked="">显示隐藏对象</label></p>
+		</form>
+		
+		<!-- /返回上目录 -->
+		
+		
 
-	
-	
-	
-		 <!-- s 目录列表 -->
-		<div class="list">
 		
-		<div class="row hl">
-			<b><%= current_dir%></b>
-			<input type="hidden" name="target" id="target" value="<%= target_dir%>">
-			<input type="hidden" name="work" id="work" value="<%= current_dir%>">
-		</div>
-		
-		<!-- s 行 -->
-		<div class="row">
-			<div class="col-1">文件名</div>
-			<div class="col-2">大小</div>
-			<div class="col-3">修改日期</div>
-		</div>
-		<!-- e 行 -->
-		
-		
-			<% if (root_dir != current_dir ) { %>
-			<!-- 返回上目录 -->
-			<form action="" method="POST" id="backform">
+		<table>
+			 <thead>
+			  <tr>
+			   <th style="width:60%;"><a href="">名称</a></th>
+			   <th style="width:10%;"><a href="">大小</a></th>
+			   <th style="text-align:center;"><a href="">修改时间</a></th>
+			  </tr>
+			 </thead>
+
+			 <tbody>
+				<!-- s 循环 -->
 				
-				<div class="row">
-					<div class="col-1 is_folder">
-						<input type="hidden" name="dir" id="dir" value="..">
-						<i class="ifl"></i><!-- 
-						 --><a  href="javascript:;" alt="backform" class="hl fn">返回上一级</a>
-					</div>
-					<div class="col-2">-</div>
-					<div class="col-3">-</div>
-				</div>
-			</form>
-			
-			<!-- /返回上目录 -->
-			<% } %>
+				<form action="" method="POST" id="from1">
+				<tr>
+				 <td>
+						<input type="hidden" name="dir" value="t.txt">
+						<a href="javascript:;" alt="from1" class="file">t.txt</a>	
+				 </td>
+				 <td>20</td>
+				 <td style="text-align:center;">2015-12-02 10:09:10</td>
+				</tr>
+				</form>
+				
+				<form action="" method="POST" id="from1">
+				<tr>
+				 <td>
+						<input type="hidden" name="dir" value="f">
+						<a href="javascript:;" alt="from1" class="dir">f</a>	
+				 </td>
+				 <td>20</td>
+				 <td style="text-align:center;">2015-12-02 10:09:10</td>
+				</tr>
+				</form>
+
+				<!-- e 循环 -->
 		
-			<!-- s 循环 -->
-			<% data.forEach(function(files){ %>
-			<form action="" method="POST" id="from<%= files.number %>">
-				<div class="row">
-					<div class="col-1 <%= files.type %>">
-						<input type="hidden" name="dir" value="<%= files.file %>">
-						<i class="ifl"></i><!-- 
-						 --><a  href="javascript:;" alt="from<%= files.number %>" class="hl fn <%= files.type %>"><%= files.file %></a>
-					</div>
-					<div class="col-2"><%= files.size %></div>
-					<div class="col-3"><%= files.mtime %></div>
-				</div>
-			</form>
-			<% }) %>
-			<!-- e 循环 -->
-			
-			<div class="row hl">
-			&nbsp;
-			</div>
-		</div>
-		<!-- e 目录列表 -->
+			</tbody>
+		</table>
 	
+	</div>
 	<script src="http://libs.baidu.com/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	
@@ -86,7 +84,7 @@
 			var file = $('#work').val()+'\\'+me.text();
 			var target = $('#target').val()+'/'+me.text();
 			
-			if(me.hasClass('file')){
+			if(me.attr('class') == 'file'){
 				// 上传文件
 				$.ajax({
 				  type: 'POST',

@@ -2,92 +2,212 @@ body {
     background-color: #F0F0F0;
 }
 
-.warp{
-	background-color: #fff;
-    border: 1px solid threedshadow;
-    border-radius: 10px;
-    color: #000;
-    margin: 4em auto;
-    max-width: 65em;
-    min-width: 30em;
-    padding: 3em;
-}
 
-h1 {
-    border-bottom: 1px solid threedlightshadow;
-    font-size: 160%;
-    font-weight: normal;
-    margin: 0 0 0.6em;
-}
-a {
-    text-decoration: none;
+a{
+	color: #455469;
+	text-decoration: none;
 }
 a:hover {
     text-decoration: underline;
 }
-p {
-    font-size: 110%;
+
+form{
+	margin:0;
 }
-#UI_goUp {
-    float: left;
-    margin-top: 0;
-}
-#UI_goUp:-moz-dir(rtl) {
-    float: right;
-}
-#UI_showHidden {
-    float: right;
-    margin-top: 0;
-}
-#UI_showHidden:-moz-dir(rtl) {
-    float: left;
-}
-table {
-    clear: both;
-    margin: 0 auto;
-    width: 90%;
+.list{ background-color: #fff;width:1000px; margin:0 auto;}
+
+
+.list .file:before,.list .dir:before{
+	content:'';
 }
 
-thead {
-    font-size: 16px;
+.list .file .ifl {
+   
+	background-position: -400px -100px;
 }
-th {
-    text-align: left;
-    white-space: nowrap;
-}
-
-th>a{
-	color:#000;
-}
-th:hover > a {
-    text-decoration: underline;
-	
+.list .dir .ifl {
+    background-position: -400px -200px;
 }
 
-.warp > table > tbody > tr:hover {
-    -moz-outline-radius: 0.3em;
-    outline: 1px solid threedlightshadow;
+.row{
+	width:960px;
+	padding:0 20px;
+	border-bottom:1px solid #EDEDED;
 }
 
-td{
-	font-size:12px;
-	cursor:pointer;
-	text-align: left;
+.row:hover{
+	background-color: #fcfcfc
 }
 
-.up {
-    margin-inline-start: 20px;
-    padding: 0 0.5em;
+.clearfix:after,.row:after {
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
 }
-.up::before {
-    content: url("../img/up.png");
-    margin-inline-end: 4px;
-    margin-inline-start: -20px;
-    vertical-align: middle;
+.clearxi,.row {
+  *zoom: 1;
 }
-.dir::before {
-    content: url("../img/folder.png");
+
+.row .col-1{
+	width:660px;
 }
-.file::before {
-    content: url("../img/file.png");
+.row .col-2{
+	width:100px;
+}
+.row .col-3{
+	width:200px;
+}
+
+.row .col-1,.row .col-2,.row .col-3{
+	float:left;
+	line-height:43px;
+	font-size:14px;
+}
+
+.hl{
+	line-height:43px;
+}
+
+.fn{
+	margin-left:12px;
+}
+
+.ifl {
+    background-image: url("//s3.kuaipan.cn/i/4/258.png") !important;
+    height: 32px;
+    width: 32px;
+	display: inline-block;
+	background-position: -300px -100px;
+	margin-left: 0px;
+    margin-top: 5px;
+	vertical-align: top;
+}
+
+.file_doc .ifl, .file_docx .ifl, .file_wps .ifl {
+    background-position: 0 0;
+}
+.file_xls .ifl, .file_xlsx .ifl, .file_et .ifl {
+    background-position: -100px 0;
+}
+.file_ppt .ifl, .file_pptx .ifl {
+    background-position: -200px 0;
+}
+.file_xml .ifl {
+    background-position: -300px 0;
+}
+.file_pdf .ifl {
+    background-position: -400px 0;
+}
+.file_html .ifl, .file_xhtml .ifl {
+    background-position: 0 -100px;
+}
+.file_rmvb .ifl {
+    background-position: -100px -100px;
+}
+.is_video .ifl {
+    background-position: -200px -100px;
+}
+.file_7z .ifl, .file_gz .ifl, .file_rar .ifl, .file_zip .ifl {
+    background-position: -300px -100px;
+}
+.file_txt .ifl {
+    background-position: -400px -100px;
+}
+.file_day .ifl {
+    background-position: -500px -100px;
+}
+.is_folder .ifl {
+    background-position: -400px -200px;
+}
+.is_image .ifl {
+    background-position: -500px -200px;
+}
+.is_audio .ifl {
+    background-position: 0 -300px;
+}
+.file_htm .ifl {
+    background-position: -100px -300px;
+}
+.file_java .ifl {
+    background-position: -200px -300px;
+}
+.file_js .ifl {
+    background-position: -300px -300px;
+}
+.file_jsp .ifl {
+    background-position: -400px -300px;
+}
+.file_dwg .ifl {
+    background-position: -500px -300px;
+}
+.file_css .ifl {
+    background-position: 0 -400px;
+}
+.file_c .ifl {
+    background-position: -100px -400px;
+}
+.file_cad .ifl {
+    background-position: -200px -400px;
+}
+.file_dat .ifl {
+    background-position: -300px -400px;
+}
+.file_db .ifl, .file_database .ifl {
+    background-position: -400px -400px;
+}
+.file_h .ifl {
+    background-position: -500px -400px;
+}
+.file_dll .ifl {
+    background-position: 0 -500px;
+}
+.file_php .ifl {
+    background-position: -100px -500px;
+}
+.file_psd .ifl {
+    background-position: -200px -500px;
+}
+.file_swf .ifl {
+    background-position: -300px -500px;
+}
+.file_class .ifl {
+    background-position: -400px -500px;
+}
+.is_code .ifl {
+    background-position: -500px -500px;
+}
+.folder_kp .ifl {
+    background-position: -300px -200px;
+}
+.folder_kp-mobibak .ifl {
+    background-position: 0 -600px;
+}
+.folder_kp-doc .ifl {
+    background-position: -100px -600px;
+}
+.folder_kp-audio .ifl {
+    background-position: -200px -600px;
+}
+.folder_kp-video .ifl {
+    background-position: -300px -600px;
+}
+.folder_kp-book .ifl {
+    background-position: -400px -600px;
+}
+.folder_kp-weixin .ifl {
+    background-position: 0 -700px;
+}
+.folder_kp-camp .ifl {
+    background-position: -100px -700px;
+}
+.folder_kp-pic .ifl {
+    background-position: -200px -700px;
+}
+.folder_kp-camv .ifl {
+    background-position: -300px -700px;
+}
+.folder_kp-app .ifl {
+    background-position: -400px -700px;
 }
