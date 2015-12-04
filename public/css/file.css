@@ -2,19 +2,14 @@ body {
     background-color: #F0F0F0;
 }
 
-
-a{
-	color: #455469;
-	text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
+a{	color: #455469;	text-decoration: none;}
+a:hover {    text-decoration: underline;}
 
 form{
 	margin:0;
+	display:inline-block;
 }
-.list{ background-color: #fff;width:1000px; margin:0 auto;}
+.list{ background-color: #fff;width:1000px; margin:20px auto;}
 
 
 .list .file:before,.list .dir:before{
@@ -72,6 +67,32 @@ form{
 
 .fn{
 	margin-left:12px;
+}
+
+.p20{
+	padding:0 20px;
+
+}
+.toolbar{
+	height:68px;
+	background-color:#25AB5E;
+	line-height:68px;
+}
+
+.toolbar form{
+	float:left;
+}
+
+.toolbar a{
+	color:#fff;
+	display:inline-block;
+	line-height:68px;
+	padding:0 20px;
+}
+
+.toolbar a:hover{
+	background-color:#32BD6D;
+	text-decoration: none;
 }
 
 .ifl {

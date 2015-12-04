@@ -14,11 +14,26 @@
 		 <!-- s 目录列表 -->
 		<div class="list">
 		
-		<div class="row hl">
+		<div class="hl p20">
 			<b><%= current_dir%></b>
 			<input type="hidden" name="target" id="target" value="<%= target_dir%>">
 			<input type="hidden" name="work" id="work" value="<%= current_dir%>">
 		</div>
+		
+		
+		<!-- 返回上目录 -->
+		<div class="p20 toolbar">
+				<form action="" method="POST" id="root">
+					<input type="hidden" name="dir" id="dir" value="..."><a  href="javascript:;" alt="root">根目录</a>
+				 </form>
+			<% if (root_dir != current_dir ) { %>
+				 <form action="" method="POST" id="backform">
+					<input type="hidden" name="dir" id="dir" value=".."><a  href="javascript:;" alt="backform">返回上一级</a>
+				 </form>
+			<% } %>
+		</div>
+		<!-- /返回上目录 -->
+			
 		
 		<!-- s 行 -->
 		<div class="row">
@@ -27,25 +42,6 @@
 			<div class="col-3">修改日期</div>
 		</div>
 		<!-- e 行 -->
-		
-		
-			<% if (root_dir != current_dir ) { %>
-			<!-- 返回上目录 -->
-			<form action="" method="POST" id="backform">
-				
-				<div class="row">
-					<div class="col-1 is_folder">
-						<input type="hidden" name="dir" id="dir" value="..">
-						<i class="ifl"></i><!-- 
-						 --><a  href="javascript:;" alt="backform" class="hl fn">返回上一级</a>
-					</div>
-					<div class="col-2">-</div>
-					<div class="col-3">-</div>
-				</div>
-			</form>
-			
-			<!-- /返回上目录 -->
-			<% } %>
 		
 			<!-- s 循环 -->
 			<% data.forEach(function(files){ %>
@@ -63,13 +59,13 @@
 			<% }) %>
 			<!-- e 循环 -->
 			
-			<div class="row hl">
+			<div class="hl">
 			&nbsp;
 			</div>
 		</div>
 		<!-- e 目录列表 -->
 	
-	<script src="http://libs.baidu.com/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script>
 	<script type="text/javascript">
 	
 	function readdir(id){
@@ -96,10 +92,10 @@
 					file:file
 				  },
 				  dataType: 'json',
-				  success: function(data){
+				  success: function(){
 					console.log('111');
 				  }
-				});
+				})
 			}else{
 				// 进入目录
 				readdir(me.attr('alt'));

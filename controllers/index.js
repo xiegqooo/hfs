@@ -8,6 +8,28 @@ var path = config.path;
 var target = config.target;
 
 
+var by = function(name){  
+    return function(o, p){  
+        var a, b;  
+        if (typeof o === "object" && typeof p === "object" && o && p) {  
+            a = o[name];  
+            b = p[name];  
+            if (a === b) {  
+                return 0;  
+            }  
+            if (typeof a === typeof b) {  
+                return a < b ? -1 : 1;  
+            }  
+            return typeof a < typeof b ? -1 : 1;  
+        }  
+        else {  
+            throw ("error");  
+        }  
+    }  
+}; 
+
+
+
 var self = function(req, res){
 		
 	var form = new formidable.IncomingForm();
@@ -20,10 +42,14 @@ var self = function(req, res){
 			if(fields.dir == '..'){
 				path = path.substring(0,path.lastIndexOf('\\'));
 				target = target.substring(0,target.lastIndexOf('/'));
+			}else if(fields.dir == '...'){
+				path = config.path;
+				target = config.target;
 			}else{
 				path += "\\"+fields.dir;
 				target += "/"+fields.dir;
 			}
+			
 		}
 		
 		// s 读取目录
@@ -46,7 +72,7 @@ var self = function(req, res){
 							"current_dir":path,
 							"target_dir":target,
 							"root_dir":config.path,
-							"data":show
+							"data":show.sort(by('size'))
 						}); 
 					}
 				});
