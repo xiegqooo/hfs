@@ -1,5 +1,6 @@
 body {
     background-color: #F0F0F0;
+	margin:0;
 }
 
 a{	color: #455469;	text-decoration: none;}
@@ -34,28 +35,28 @@ form{
 	background-color: #fcfcfc
 }
 
-.clearfix:after,.row:after {
+.clx:after,.row:after {
   content: ".";
   display: block;
   height: 0;
   visibility: hidden;
   clear: both;
 }
-.clearxi,.row {
+.clx,.row {
   *zoom: 1;
 }
 
-.row .col-1{
+.col-1{
 	width:660px;
 }
-.row .col-2{
+.col-2{
 	width:100px;
 }
-.row .col-3{
+.col-3{
 	width:200px;
 }
 
-.row .col-1,.row .col-2,.row .col-3{
+.col-1,.col-2,.col-3{
 	float:left;
 	line-height:43px;
 	font-size:14px;
@@ -73,10 +74,29 @@ form{
 	padding:0 20px;
 
 }
-.toolbar{
+.bb{
+	border-bottom:2px solid #EDEDED;
+}
+
+.tip{
 	height:68px;
-	background-color:#25AB5E;
 	line-height:68px;
+	background-color:#32bd6d;
+	text-align:center;
+	color:#fff;
+	font-size:20px;
+	position: fixed;
+	top:0;
+	left:0;
+	width:100%;
+	display:none;
+}
+
+.toolbar{
+	height:40px;
+	line-height:40px;
+	background-color:#25AB5E;
+	/* line-height:68px; */
 }
 
 .toolbar form{
@@ -86,7 +106,7 @@ form{
 .toolbar a{
 	color:#fff;
 	display:inline-block;
-	line-height:68px;
+	line-height:40px;
 	padding:0 20px;
 }
 
