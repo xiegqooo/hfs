@@ -14,6 +14,7 @@ app.use('/static', express.static('public'));
 // 模块
 app.resource('/', require('./controllers/index'));
 app.resource('receiver', require('./controllers/receiver'));
+app.resource('log', require('./controllers/readfile'));
 
 
 // 开启服务

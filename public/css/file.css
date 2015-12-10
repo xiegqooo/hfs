@@ -115,8 +115,20 @@ form{
 	text-decoration: none;
 }
 
+.warn{
+	color:#fff;
+	font-size:12px;
+	display:inline-block;
+	background-color:#AD00FF;
+	padding:8px 0;
+	width:112px;
+	margin:4px 4px 0 4px;
+	text-align:center;
+	line-height:12px;
+}
+
 .ifl {
-    background-image: url("//s3.kuaipan.cn/i/4/258.png") !important;
+    background-image: url("../img/258.png") !important;
     height: 32px;
     width: 32px;
 	display: inline-block;

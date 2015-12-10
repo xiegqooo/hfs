@@ -4,7 +4,7 @@
 <link href="/static/css/file.css" type="text/css" media="screen, projection" rel="stylesheet">
 <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8%2F9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAjFJREFUeNqsU8uOElEQPffR3XQ3ONASdBJCSBxHos5%2B3Bg3rvkCv8PElS78gPkO%2FATjQoUdO2ftrJiRh6aneTb9sOpC4weMN6lcuFV16pxDIfI8x12OYIDhcPiu2Wx%2B%2FHF5CW1Z6Jyegt%2FTNEWSJIjjGFEUIQxDrFYrWFSzXC4%2FdLvd95pRKpXKy%2BpRFZ7nwaWo1%2BsGnQG2260BKJfLKJVKGI1GEEJw7ateryd0v993W63WEwjgxfn5obGYzgCbzcaEbdsIggDj8Riu6z6iUk9SYZMSx8W0LMsM%2FSKK75xnJlIq80anQXdbEp0OhcPJ0eiaJnGRMEyyPDsAKKUM9clkYoDo3SZJzzSdp0VSKYmfV1co%2Bz580kw5KDIM8RbRfEnUf1HzxtQyMAGcaGruTKczMzEIaqhKifV6jd%2BzGQQB5llunF%2FM52BizC2K5sYPYvZcu653tjOM9O93wnYc08gmkgg4VAxixfqFUJT36AYBZGd6PJkFCZnnlBxMp38gqIgLpZB0y4Nph18lyWh5FFbrOSxbl3V4G%2BVB7T4ajYYxTyuLtO%2BCvWGgJE1Mc7JNsJEhvgw%2FQV4fo%2F24nbEsX2u1d5sVyn8sJO0ZAQiIYnFh%2BxrfLz%2Fj29cBS%2FO14zg3i8XigW3ZkErDtmKoeM%2BAJGRMnXeEPGKf0nCD1ydvkDzU9Jbc6OpR7WIw6L8lQ%2B4pQ1%2FlPF0RGM9Ns91Wmptk0GfB4EJkt77vXYj%2F8m%2B8y%2FkrwABHbz2H9V68DQAAAABJRU5ErkJggg%3D%3D" type="image/png" rel="icon">
 
-<title>发布项目</title>
+<title>查看日志</title>
 </head>
 <body>
 
@@ -24,17 +24,12 @@
 		
 		<!-- s 操作目录 -->
 		<div class="p20 toolbar clx">
-				<form action="/log" method="GET" id="log">
+				<form action="" method="GET" id="log">
 					<a href="javascript:;" alt="log">Log</a>
-				</form>
-				<form action="" method="POST" id="root">
-					<input type="hidden" name="dir" id="dir" value="..."><a  href="javascript:;" alt="root">根目录</a>
 				 </form>
-			<% if (root_dir != current_dir ) { %>
-				 <form action="" method="POST" id="backform">
-					<input type="hidden" name="dir" id="dir" value=".."><a  href="javascript:;" alt="backform">返回上一级</a>
+				<form action="/" method="POST" id="root">
+					<input type="hidden" name="dir" id="dir" value="..."><a  href="javascript:;"  alt="root">根目录</a>
 				 </form>
-			<% } %>
 		</div>
 		<!-- e 操作目录 -->
 		
@@ -64,8 +59,12 @@
 			<% }) %>
 			<!-- e 循环 -->
 			
-			<div class="hl">
-			&nbsp;
+			<div class="hl p20" style="padding-bottom:4px;">
+				<form action="/log" method="POST" id="rf">
+					<input type="hidden" name="files" id="back" value="">
+					<div id="files"></div>
+					<a href="javascript:;"  alt="rf">提交</a>
+				</form>
 			</div>
 		</div>
 		<!-- e 目录列表 -->
@@ -80,32 +79,25 @@
 	$(document).ready(function(){
 	
 		$("a").click(function(){
-			// 
-			
+		
 			var me = $(this);
-			
-			var file = $('#work').val()+'\\'+me.text();
-			var target = $('#target').val()+'/'+me.text();
-			
+
 			if(me.hasClass('file')){
-				// 上传文件
-				$.ajax({
-				  type: 'POST',
-				  url: '/receiver',
-				  data: {
-					to:target,
-					file:file
-				  },
-				  dataType: 'json'
-				}).success(function(data){
-					$('.tip').text("发布成功！");
-					$('.tip').fadeIn(500);
-					$('.tip').fadeOut(1000);
-					
-				}).error(function(e){
-					$('.tip').html('<span style="color:#f00;">发布失败！</span>');
-					$('.tip').fadeIn(500);
-				});
+				// 获取
+				var files = $('#back').val();
+				var work = $('#work').val();
+				// 非空
+				if(files){
+					// 去掉重复数据
+					if(files.indexOf(me.text()) > -1){
+						return ;
+					}
+				}
+				// 添加内容
+				files += work+'\\'+me.text() +',';
+				$('#back').val(files);
+				$('#files').append('<span class="warn">'+me.text()+'</span>');
+				
 			}else{
 				// 进入目录
 				readdir(me.attr('alt'));

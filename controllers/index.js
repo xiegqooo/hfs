@@ -3,33 +3,15 @@
 var fs = require('fs');
 var formidable = require('formidable');
 var dateFormat = require('dateformat');
+var path = require('path');
 
-var path = config.path;
+var wrok = config.path;
 var target = config.target;
 
 
-var by = function(name){  
-    return function(o, p){  
-        var a, b;  
-        if (typeof o === "object" && typeof p === "object" && o && p) {  
-            a = o[name];  
-            b = p[name];  
-            if (a === b) {  
-                return 0;  
-            }  
-            if (typeof a === typeof b) {  
-                return a < b ? -1 : 1;  
-            }  
-            return typeof a < typeof b ? -1 : 1;  
-        }  
-        else {  
-            throw ("error");  
-        }  
-    }  
-}; 
+var arry = require('../lib/array');
 
-
-
+ 
 var self = function(req, res){
 		
 	var form = new formidable.IncomingForm();
@@ -39,21 +21,18 @@ var self = function(req, res){
 		if(fields.dir){
 
 			// 美化 url 地址
-			if(fields.dir == '..'){
-				path = path.substring(0,path.lastIndexOf('\\'));
-				target = target.substring(0,target.lastIndexOf('/'));
-			}else if(fields.dir == '...'){
-				path = config.path;
+			wrok = path.join(wrok,fields.dir);
+			target = path.join(target,fields.dir).replace(/\\/g,'/');
+			
+			if(fields.dir == '...'){
+				wrok = config.path;
 				target = config.target;
-			}else{
-				path += "\\"+fields.dir;
-				target += "/"+fields.dir;
 			}
 			
 		}
 		
 		// s 读取目录
-		fs.readdir(path,function(err, data){
+		fs.readdir(wrok,function(err, data){
 	
 		var show  = [];
 		var total = data.length;
@@ -61,7 +40,7 @@ var self = function(req, res){
 			// s 遍历
 			data.forEach(function(file) {
 				// s 读取文件信息
-				fs.stat(path+'\\'+file,function(err, data){
+				fs.stat(wrok+'\\'+file,function(err, data){
 					var type = data.isFile()?'file':'dir';
 
 					show.push({number:i,'file':file,'size':data.size,'type':type,'mtime':dateFormat(data.mtime,"yyyy-mm-dd hh:MM:ss")});
@@ -69,10 +48,10 @@ var self = function(req, res){
 					
 					if( i == total){
 						res.render("index",{
-							"current_dir":path,
+							"current_dir":wrok,
 							"target_dir":target,
 							"root_dir":config.path,
-							"data":show.sort(by('size'))
+							"data":show.sort(arry.by('size'))
 						}); 
 					}
 				});
