@@ -1,61 +1,171 @@
-﻿<html>
+﻿<html lang="en">
 <head>
 <meta charset="UTF-8">
-<link href="/static/css/file.css" type="text/css" media="screen, projection" rel="stylesheet">
+<link href="./static/css/file.css" type="text/css" rel="stylesheet">
+<link href="./static/css/font-awesome.min.css" type="text/css"rel="stylesheet">
+<link href="./static/css/modal.css" type="text/css"  rel="stylesheet">
 <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8%2F9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAjFJREFUeNqsU8uOElEQPffR3XQ3ONASdBJCSBxHos5%2B3Bg3rvkCv8PElS78gPkO%2FATjQoUdO2ftrJiRh6aneTb9sOpC4weMN6lcuFV16pxDIfI8x12OYIDhcPiu2Wx%2B%2FHF5CW1Z6Jyegt%2FTNEWSJIjjGFEUIQxDrFYrWFSzXC4%2FdLvd95pRKpXKy%2BpRFZ7nwaWo1%2BsGnQG2260BKJfLKJVKGI1GEEJw7ateryd0v993W63WEwjgxfn5obGYzgCbzcaEbdsIggDj8Riu6z6iUk9SYZMSx8W0LMsM%2FSKK75xnJlIq80anQXdbEp0OhcPJ0eiaJnGRMEyyPDsAKKUM9clkYoDo3SZJzzSdp0VSKYmfV1co%2Bz580kw5KDIM8RbRfEnUf1HzxtQyMAGcaGruTKczMzEIaqhKifV6jd%2BzGQQB5llunF%2FM52BizC2K5sYPYvZcu653tjOM9O93wnYc08gmkgg4VAxixfqFUJT36AYBZGd6PJkFCZnnlBxMp38gqIgLpZB0y4Nph18lyWh5FFbrOSxbl3V4G%2BVB7T4ajYYxTyuLtO%2BCvWGgJE1Mc7JNsJEhvgw%2FQV4fo%2F24nbEsX2u1d5sVyn8sJO0ZAQiIYnFh%2BxrfLz%2Fj29cBS%2FO14zg3i8XigW3ZkErDtmKoeM%2BAJGRMnXeEPGKf0nCD1ydvkDzU9Jbc6OpR7WIw6L8lQ%2B4pQ1%2FlPF0RGM9Ns91Wmptk0GfB4EJkt77vXYj%2F8m%2B8y%2FkrwABHbz2H9V68DQAAAABJRU5ErkJggg%3D%3D" type="image/png" rel="icon">
+
 
 <title>发布项目</title>
 </head>
 <body>
-
 		<!-- 消息提醒 -->
 		<div class="tip"></div>
 		<!-- 消息提醒 -->
 	
 	
+		
+		<style>
+		
+		.container{
+			width:1000px; 
+			margin:0 auto;
+		}
+		
+		.pagehead{
+			background-color:#1AB394;
+			height:42px;
+		}
+
+		.reponav {
+			height:42px;
+		}
+		.reponav-item {
+			display:inline-block;
+			float:left;
+			padding:0 8px;
+			line-height:42px;
+			color:#fff;
+		}
+		.reponav-item:hover{
+			background-color:#18a689;
+			color:#fff;
+			text-decoration: none;
+		}
+		
+		.reponav .selected{
+			background-color:#18a689;
+			color:#fff;
+		}
+		
+		.account{
+			height:68px;
+			background-color:#2F4050;
+		}
+		
+		.account-item{
+			color:#A7A199;
+			float:left;
+			display:inline-block;
+			height:68px;
+			line-height:68px;
+		}
+		
+		.account-item:hover{
+			background-color:#293846;
+			color:#fff;
+			text-decoration: none;
+		}
+		
+		.account-item > i{
+			padding:18px 22px;
+			font-size:32px;
+		}
+		
+		
+		.inmodal .modal-header{
+			text-align:center;
+		}
+		
+		.inmodal .modal-icon {
+			color: #e2e3e3;
+			font-size: 84px;
+		}
+	
+		</style>
+		
+		
+		<div class="account">
+
+			<div class="container">
+				
+				<nav class="clx">
+					<a class="account-item selected" href="#" data-target="#myModal" data-toggle="modal" >
+						<i class="fa fa-plus-square-o"></i>
+					</a>
+					<a class="account-item" href="#">
+						<i class="fa fa-minus-square-o"></i>
+					</a>
+				</nav>
+				
+			</div>
+			
+		</div>
+
+		<div class="pagehead">
+
+			<div class="container">
+			
+				<nav class="reponav clx">
+			<!-- s 循环 -->
+			<% projects.forEach(function(p){ %>
+			<% if (p == current_project) { %>
+				<a class="reponav-item selected" href="/?project=<%= p %>">
+			<%}else{%>
+				<a class="reponav-item" href="/?project=<%= p %>">
+			<%}%>
+						<%= p %>
+					</a>
+			<% }); %>
+			<!-- e 循环 -->
+				</nav>
+
+			</div>
+		</div>
+
 		 <!-- s 目录列表 -->
 		<div class="list">
+
+			<div class="hl p20" style="height:68px;line-height:68px;">
+				<b><%= current_dir%></b>
+				<input type="hidden" name="target" id="target" value="<%= target_dir%>">
+				<input type="hidden" name="work" id="work" value="<%= current_dir%>">
+				<input type="hidden" name="server" id="server" value="<%= server_url %>">
+			</div>
 		
-		<div class="hl p20" style="height:68px;line-height:68px;">
-			<b><%= current_dir%></b>
-			<input type="hidden" name="target" id="target" value="<%= target_dir%>">
-			<input type="hidden" name="work" id="work" value="<%= current_dir%>">
-		</div>
+			<!-- s 操作目录 -->
+			<div class="p20 toolbar clx">
+					<form action="/log" method="GET" id="log">
+						<a href="javascript:;" alt="log">Log</a>
+					</form>
+					<form action="" method="POST" id="root">
+						<input type="hidden" name="dir" id="dir" value="..."><a  href="javascript:;" alt="root">根目录</a>
+					 </form>
+				<% if (root_dir != current_dir ) { %>
+					 <form action="" method="POST" id="backform">
+						<input type="hidden" name="dir" id="dir" value=".."><a  href="javascript:;" alt="backform">返回上一级</a>
+					 </form>
+				<% } %>
+			</div>
+			<!-- e 操作目录 -->
 		
-		<!-- s 操作目录 -->
-		<div class="p20 toolbar clx">
-				<form action="/log" method="GET" id="log">
-					<a href="javascript:;" alt="log">Log</a>
-				</form>
-				<form action="" method="POST" id="root">
-					<input type="hidden" name="dir" id="dir" value="..."><a  href="javascript:;" alt="root">根目录</a>
-				 </form>
-			<% if (root_dir != current_dir ) { %>
-				 <form action="" method="POST" id="backform">
-					<input type="hidden" name="dir" id="dir" value=".."><a  href="javascript:;" alt="backform">返回上一级</a>
-				 </form>
-			<% } %>
-		</div>
-		<!-- e 操作目录 -->
-		
-		<!-- s 表头 -->
-		<div class="hl p20 clx bb">
-			<div class="col-1">文件名</div>
-			<div class="col-2">大小</div>
-			<div class="col-3">修改日期</div>
-		</div>
-		<!-- e 表头 -->
-		
-		
-		
+			<!-- s 表头 -->
+			<div class="hl p20 clx bb">
+				<div class="col-1">文件名</div>
+				<div class="col-2">大小</div>
+				<div class="col-3">修改日期</div>
+			</div>
+			<!-- e 表头 -->
+
 			<!-- s 循环 -->
 			<% data.forEach(function(files){ %>
-			<form action="" method="POST" id="from<%= files.number %>">
+			<form action="" method="POST" id="<%= files.file %>">
 				<div class="row">
 					<div class="col-1 <%= files.type %>">
 						<input type="hidden" name="dir" value="<%= files.file %>">
 						<i class="ifl"></i><!-- 
-						 --><a  href="javascript:;" alt="from<%= files.number %>" class="hl fn <%= files.type %>"><%= files.file %></a>
+						 --><a  href="javascript:;" alt="<%= files.file %>" class="hl fn <%= files.type %>"><%= files.file %></a>
 					</div>
 					<div class="col-2"><%= files.size %></div>
 					<div class="col-3"><%= files.mtime %></div>
@@ -69,15 +179,73 @@
 			</div>
 		</div>
 		<!-- e 目录列表 -->
+		
+		
+		<!-- s 弹窗 -->
+		<div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content animated bounceInRight">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<i class="fa fa-laptop modal-icon"></i>
+						<h4 class="modal-title">添加项目</h4>
+						<small class="font-bold">需要为项目添加</small>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>项目名称</label>
+							<input name="pname" type="text" placeholder="mgt" class="form-control">
+						</div>
+						<div class="form-group">
+							<label>本地项目</label> 
+							<input name="plocal" type="text" placeholder="E:\\workspace\\Xiangxin\\src\\app\\src\\main\\webapp" class="form-control"></div>
+						<div class="form-group">
+							<label>服务请求</label> 
+							<input name="phost" type="text" placeholder="http://42.159.5.146:9000/receiver" class="form-control"></div>
+						<div class="form-group">
+							<label>发布路径</label> 
+							<input name="ppath" type="text" placeholder="/usr/local/p2p_zhnx/appserver/mgt/webapps/ROOT" class="form-control">
+						</div>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- e 弹窗 -->
 	
-	<script src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script>
+	<script src="./static/js/jquery.min.js"></script>
+	<script src="./static/js/plugins/modal.js"></script>
 	<script type="text/javascript">
 	
-	function readdir(id){
-		document.getElementById(id).submit();
-	}
 	
 	$(document).ready(function(){
+	
+		$('.btn-primary').click(function(){
+			$.ajax({
+				  type: 'POST',
+				  url: '/config',
+				  data: {
+					pname:$('input[name=pname]').val(),
+					plocal:$('input[name=plocal]').val(),
+					phost:$('input[name=phost]').val(),
+					ppath:$('input[name=ppath]').val()
+				  },
+				  dataType: 'json'
+				}).success(function(data){
+					$('.tip').text("保存成功！");
+					$('.tip').fadeIn(500);
+					$('.tip').fadeOut(1000);
+					
+				}).error(function(e){
+					$('.tip').html('<span style="color:#f00;">保存失败！</span>');
+					$('.tip').fadeIn(500);
+				});
+		});
+	
 	
 		$("a").click(function(){
 			// 
@@ -86,6 +254,7 @@
 			
 			var file = $('#work').val()+'\\'+me.text();
 			var target = $('#target').val()+'/'+me.text();
+			var server = $('#server').val();
 			
 			if(me.hasClass('file')){
 				// 上传文件
@@ -94,6 +263,7 @@
 				  url: '/receiver',
 				  data: {
 					to:target,
+					server:server,
 					file:file
 				  },
 				  dataType: 'json'
@@ -108,7 +278,7 @@
 				});
 			}else{
 				// 进入目录
-				readdir(me.attr('alt'));
+				$('#'+me.attr('alt')).submit();
 			}
 		
 		});

@@ -1,4 +1,3 @@
-
 module.exports = {
   port:  3000,
   log:{
@@ -10,14 +9,5 @@ module.exports = {
 		}
 	],
 	dateformat : "yyyy-mm-dd HH:MM:ss"
-  },
-  path:'E:\\workspace\\Xiangxin\\src\\app\\src\\main\\webapp',
-  target:'E:\\project\\hfs\\upload\\t',
-  server:'http://localhost:8000/receiver',
-  mysql: {
-	host     : 'localhost',
-	user     : 'root',
-	port	 : 3306,
-	password : '111111'
   }
 };

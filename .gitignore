@@ -2,3 +2,5 @@ node_modules/
 log/
 config/
 upload/
+.vscode
+config.json
