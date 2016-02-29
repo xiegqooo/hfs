@@ -2,5 +2,6 @@ node_modules/
 log/
 config/
 upload/
-.vscode
+.vscode/
+.idea/
 config.json
